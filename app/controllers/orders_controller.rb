@@ -1,7 +1,19 @@
 class OrdersController < ApplicationController
   def index
     orders = Order.all
-    render json: orders, except: [:created_at, :updated_at]
+    render json: orders, except: [:created_at, :updated_at],
+    include: [
+      {
+        :user => {
+          except: [:created_at, :updated_at]
+        }
+      },
+      {
+        :books => {
+          except: [:created_at, :updated_at]
+        }
+      }
+    ]
 end
 
 def show

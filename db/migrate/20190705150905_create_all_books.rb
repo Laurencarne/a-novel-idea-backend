@@ -1,6 +1,6 @@
-class CreateBooks < ActiveRecord::Migration[5.2]
+class CreateAllBooks < ActiveRecord::Migration[5.2]
   def change
-    create_table :books do |t|
+    create_table :all_books do |t|
       t.string :title
       t.string :subtitle
       t.string :author
@@ -8,13 +8,14 @@ class CreateBooks < ActiveRecord::Migration[5.2]
       t.integer :price
       t.string :image
       t.string :publisher
-      t.string :description
-      t.string :snippet
-      t.string :genre
       t.string :publishedDate
+      t.text :description
+      t.text :snippet
+      t.string :genre
       t.integer :pageCount
       t.string :printType
       t.string :language
+
 
       t.timestamps
     end

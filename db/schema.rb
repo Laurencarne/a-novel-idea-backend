@@ -10,10 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_04_095406) do
+ActiveRecord::Schema.define(version: 2019_07_05_150905) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "all_books", force: :cascade do |t|
+    t.string "title"
+    t.string "subtitle"
+    t.string "author"
+    t.bigint "isbn"
+    t.integer "price"
+    t.string "image"
+    t.string "publisher"
+    t.string "publishedDate"
+    t.text "description"
+    t.text "snippet"
+    t.string "genre"
+    t.integer "pageCount"
+    t.string "printType"
+    t.string "language"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "book_orders", force: :cascade do |t|
     t.bigint "order_id"
@@ -26,16 +45,19 @@ ActiveRecord::Schema.define(version: 2019_07_04_095406) do
 
   create_table "books", force: :cascade do |t|
     t.string "title"
+    t.string "subtitle"
     t.string "author"
     t.bigint "isbn"
     t.integer "price"
-    t.string "image_small"
+    t.string "image"
     t.string "publisher"
     t.string "description"
     t.string "snippet"
     t.string "genre"
-    t.string "published_date"
-    t.integer "page_count"
+    t.string "publishedDate"
+    t.integer "pageCount"
+    t.string "printType"
+    t.string "language"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -2,7 +2,20 @@ class UsersController < ApplicationController
 
   def index
     user = User.all
-    render json: user, except: [:created_at, :updated_at]
+    render json: user, except: [:created_at, :updated_at],
+    include: [
+      {
+        :orders => {
+          except: [:created_at, :updated_at]
+        },
+        :books => {
+          except: [:created_at, :updated_at]
+        },
+        :wishlists => {
+          except: [:created_at, :updated_at]
+        }
+      }
+    ]
   end
 
   def show
