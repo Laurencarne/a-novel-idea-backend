@@ -1,2 +1,0 @@
-class AllBook < ApplicationRecord
-end

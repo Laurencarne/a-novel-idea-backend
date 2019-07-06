@@ -2,12 +2,32 @@ class WishlistsController < ApplicationController
 
   def index
     wishlists = Wishlist.all
-    render json: wishlists, except: [:created_at, :updated_at]
+    render json: wishlists, except: [:created_at, :updated_at],
+    include: [
+      {
+        :user => {
+          except: [:created_at, :updated_at]
+        },
+        :books => {
+          except: [:created_at, :updated_at]
+        }
+      }
+    ]
 end
 
 def show
     wishlist = Wishlist.find_by(id: params[:id])
-    render json: wishlist, except: [:created_at, :updated_at]
+    render json: wishlist, except: [:created_at, :updated_at],
+    include: [
+      {
+        :user => {
+          except: [:created_at, :updated_at]
+        },
+        :books => {
+          except: [:created_at, :updated_at]
+        }
+      }
+    ]
 end
 
 def create

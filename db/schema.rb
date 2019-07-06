@@ -10,29 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_05_150905) do
+ActiveRecord::Schema.define(version: 2019_07_04_095406) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "all_books", force: :cascade do |t|
-    t.string "title"
-    t.string "subtitle"
-    t.string "author"
-    t.bigint "isbn"
-    t.integer "price"
-    t.string "image"
-    t.string "publisher"
-    t.string "publishedDate"
-    t.text "description"
-    t.text "snippet"
-    t.string "genre"
-    t.integer "pageCount"
-    t.string "printType"
-    t.string "language"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "book_orders", force: :cascade do |t|
     t.bigint "order_id"
@@ -62,12 +43,18 @@ ActiveRecord::Schema.define(version: 2019_07_05_150905) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "orders", force: :cascade do |t|
-    t.integer "total"
+  create_table "carts", force: :cascade do |t|
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_orders_on_user_id"
+    t.index ["user_id"], name: "index_carts_on_user_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.bigint "cart_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cart_id"], name: "index_orders_on_cart_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -89,7 +76,6 @@ ActiveRecord::Schema.define(version: 2019_07_05_150905) do
 
   create_table "wishlists", force: :cascade do |t|
     t.bigint "user_id"
-    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_wishlists_on_user_id"
@@ -97,7 +83,8 @@ ActiveRecord::Schema.define(version: 2019_07_05_150905) do
 
   add_foreign_key "book_orders", "books"
   add_foreign_key "book_orders", "orders"
-  add_foreign_key "orders", "users"
+  add_foreign_key "carts", "users"
+  add_foreign_key "orders", "carts"
   add_foreign_key "wish_books", "books"
   add_foreign_key "wish_books", "wishlists"
   add_foreign_key "wishlists", "users"

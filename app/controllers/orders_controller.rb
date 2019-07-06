@@ -4,11 +4,9 @@ class OrdersController < ApplicationController
     render json: orders, except: [:created_at, :updated_at],
     include: [
       {
-        :user => {
+        :cart => {
           except: [:created_at, :updated_at]
-        }
-      },
-      {
+        },
         :books => {
           except: [:created_at, :updated_at]
         }
@@ -18,7 +16,17 @@ end
 
 def show
     order = Order.find_by(id: params[:id])
-    render json: order, except: [:created_at, :updated_at]
+    render json: order, except: [:created_at, :updated_at],
+    include: [
+      {
+        :cart => {
+          except: [:created_at, :updated_at]
+        },
+        :books => {
+          except: [:created_at, :updated_at]
+        }
+      }
+    ]
 end
 
 def create

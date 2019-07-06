@@ -2,19 +2,23 @@
 User.create(first_name: "Andy", last_name: "Rogers", username: "andy99")
 User.create(first_name: "Lisa", last_name: "Thompson", username: "lisa99")
 
+#CART
+Cart.create(user_id: 1)
+Cart.create(user_id: 2)
+
 #ORDERS
-Order.create(total: 50.50, user_id: 1)
-Order.create(total: 40.99, user_id: 1)
-Order.create(total: 15.95, user_id: 1)
-Order.create(total: 120.99, user_id: 2)
-Order.create(total: 20.00, user_id: 2)
-Order.create(total: 54, user_id: 2)
+Order.create(cart_id: 1)
+Order.create(cart_id: 1)
+Order.create(cart_id: 1)
+Order.create(cart_id: 2)
+Order.create(cart_id: 2)
+Order.create(cart_id: 2)
 
 #WISHLISTS
-Wishlist.create(user_id: 1, name: "Christmas")
-Wishlist.create(user_id: 1, name: "One Day...")
-Wishlist.create(user_id: 2, name: "Birthdays")
-Wishlist.create(user_id: 2, name: "Night time reads.")
+Wishlist.create(user_id: 1)
+Wishlist.create(user_id: 1)
+Wishlist.create(user_id: 2)
+Wishlist.create(user_id: 2)
 
 #BOOKS
 Book.create(title: "We Hunt the Flame", subtitle: "Testing", author: "Hafsah Faizal", isbn: 9781481431873, price: 15.99, image: "http://books.google.com/books/content?id=VylWvwEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api", publisher: "Margaret K. McElderry Books", publishedDate: "2019-11-19", description: "From #1 New York Times and USA TODAY bestselling author Cassandra Clare comes the first novel in a brand-new trilogy that stars the Shadowhunters of Edwardian London. Chain of Gold is a Shadowhunters novel. Welcome to Edwardian London, a time of electric lights and long shadows, the celebration of artistic beauty and the wild pursuit of pleasure, with demons waiting in the dark. For years there has been peace in the Shadowhunter world. James and Lucie Herondale, children of the famous Will and Tessa, have grown up in an idyll with their loving friends and family, listening to stories of good defeating evil and love conquering all. But everything changes when the Blackthorn and Carstairs families come to London…and so does a remorseless and inescapable plague. James Herondale longs for a great love, and thinks he has found it in the beautiful, mysterious Grace Blackthorn. Cordelia Carstairs is desperate to become a hero, save her family from ruin, and keep her secret love for James hidden. When disaster strikes the Shadowhunters, James, Cordelia and their friends are plunged into a wild adventure which will reveal dark and incredible powers, and the true cruel price of being a hero…and falling in love.", snippet: "From #1 New York Times and USA TODAY bestselling author Cassandra Clare comes the first novel in a brand-new trilogy where evil hides in plain sight and the only thing more dangerous than fighting demons is falling in love.", genre: "Young Adult Fiction", pageCount: 544, printType: "Book", language: "en")
@@ -22,11 +26,12 @@ Book.create(title: "Chain of Gold", subtitle: "Testing", author: "Cassandra Clar
 
 #BOOK_ORDERS
 BookOrder.create(order_id: 1, book_id: 1)
+BookOrder.create(order_id: 1, book_id: 2)
 BookOrder.create(order_id: 2, book_id: 1)
-BookOrder.create(order_id: 3, book_id: 1)
-BookOrder.create(order_id: 4, book_id: 2)
+BookOrder.create(order_id: 2, book_id: 2)
+BookOrder.create(order_id: 3, book_id: 2)
+BookOrder.create(order_id: 4, book_id: 1)
 BookOrder.create(order_id: 5, book_id: 2)
-BookOrder.create(order_id: 6, book_id: 2)
 
 #WISH_BOOKS
 WishBook.create(book_id: 1, wishlist_id: 1)
