@@ -7,9 +7,6 @@ class CartsController < ApplicationController
         :user => {
           except: [:created_at, :updated_at]
         },
-        :orders => {
-          except: [:created_at, :updated_at]
-        },
         :books => {
           except: [:created_at, :updated_at]
         }
@@ -23,9 +20,6 @@ class CartsController < ApplicationController
       include: [
         {
           :user => {
-            except: [:created_at, :updated_at]
-          },
-          :orders => {
             except: [:created_at, :updated_at]
           },
           :books => {

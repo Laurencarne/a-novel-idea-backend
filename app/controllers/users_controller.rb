@@ -6,16 +6,28 @@ class UsersController < ApplicationController
     include: [
       {
         :cart => {
-          except: [:created_at, :updated_at]
+          except: [:created_at, :updated_at],
+          include: [
+            :books => {
+              except: [:created_at, :updated_at]
+            },
+          ]
         },
         :orders => {
-          except: [:created_at, :updated_at]
-        },
-        :books => {
-          except: [:created_at, :updated_at]
+          except: [:created_at, :updated_at],
+          include: [
+            :books => {
+              except: [:created_at, :updated_at]
+            },
+          ]
         },
         :wishlist => {
-          except: [:created_at, :updated_at]
+          except: [:created_at, :updated_at],
+          include: [
+            :books => {
+              except: [:created_at, :updated_at]
+            },
+          ]
         }
       }
     ]
@@ -27,16 +39,28 @@ class UsersController < ApplicationController
       include: [
         {
           :cart => {
-            except: [:created_at, :updated_at]
+            except: [:created_at, :updated_at],
+            include: [
+              :books => {
+                except: [:created_at, :updated_at]
+              },
+            ]
           },
           :orders => {
-            except: [:created_at, :updated_at]
-          },
-          :books => {
-            except: [:created_at, :updated_at]
+            except: [:created_at, :updated_at],
+            include: [
+              :books => {
+                except: [:created_at, :updated_at]
+              },
+            ]
           },
           :wishlist => {
-            except: [:created_at, :updated_at]
+            except: [:created_at, :updated_at],
+            include: [
+              :books => {
+                except: [:created_at, :updated_at]
+              },
+            ]
           }
         }
       ]

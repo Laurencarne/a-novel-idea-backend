@@ -27,6 +27,6 @@ def destroy
 end
 
 def book_params
-  params.require(:book).permit(:title, :author, :isbn, :price, :image_small, :publisher, :description, :snippet, :genre, :published_date, :page_count)
+  params.require(:book).permit(:id, :title, :author, :isbn, :price, :image, :publisher, :description, :snippet, :genre, :publishedDate, :pageCount)
 end
 end

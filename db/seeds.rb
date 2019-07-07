@@ -7,12 +7,12 @@ Cart.create(user_id: 1)
 Cart.create(user_id: 2)
 
 #ORDERS
-Order.create(cart_id: 1)
-Order.create(cart_id: 1)
-Order.create(cart_id: 1)
-Order.create(cart_id: 2)
-Order.create(cart_id: 2)
-Order.create(cart_id: 2)
+Order.create(user_id: 1)
+Order.create(user_id: 1)
+Order.create(user_id: 1)
+Order.create(user_id: 2)
+Order.create(user_id: 2)
+Order.create(user_id: 2)
 
 #WISHLISTS
 Wishlist.create(user_id: 1)
@@ -42,3 +42,11 @@ WishBook.create(book_id: 2, wishlist_id: 1)
 WishBook.create(book_id: 2, wishlist_id: 2)
 WishBook.create(book_id: 2, wishlist_id: 3)
 WishBook.create(book_id: 2, wishlist_id: 4)
+
+#CART_BOOKS
+CartBook.create(cart_id: 1, book_id: 1)
+CartBook.create(cart_id: 1, book_id: 1)
+CartBook.create(cart_id: 1, book_id: 2)
+CartBook.create(cart_id: 2, book_id: 2)
+CartBook.create(cart_id: 2, book_id: 2)
+CartBook.create(cart_id: 2, book_id: 1)

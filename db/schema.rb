@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_04_095406) do
+ActiveRecord::Schema.define(version: 2019_07_07_091910) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,15 @@ ActiveRecord::Schema.define(version: 2019_07_04_095406) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "cart_books", force: :cascade do |t|
+    t.bigint "cart_id"
+    t.bigint "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_cart_books_on_book_id"
+    t.index ["cart_id"], name: "index_cart_books_on_cart_id"
+  end
+
   create_table "carts", force: :cascade do |t|
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -51,10 +60,10 @@ ActiveRecord::Schema.define(version: 2019_07_04_095406) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.bigint "cart_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["cart_id"], name: "index_orders_on_cart_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -83,8 +92,10 @@ ActiveRecord::Schema.define(version: 2019_07_04_095406) do
 
   add_foreign_key "book_orders", "books"
   add_foreign_key "book_orders", "orders"
+  add_foreign_key "cart_books", "books"
+  add_foreign_key "cart_books", "carts"
   add_foreign_key "carts", "users"
-  add_foreign_key "orders", "carts"
+  add_foreign_key "orders", "users"
   add_foreign_key "wish_books", "books"
   add_foreign_key "wish_books", "wishlists"
   add_foreign_key "wishlists", "users"

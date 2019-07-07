@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
     render json: orders, except: [:created_at, :updated_at],
     include: [
       {
-        :cart => {
+        :user => {
           except: [:created_at, :updated_at]
         },
         :books => {
@@ -19,7 +19,7 @@ def show
     render json: order, except: [:created_at, :updated_at],
     include: [
       {
-        :cart => {
+        :user => {
           except: [:created_at, :updated_at]
         },
         :books => {
