@@ -22,11 +22,13 @@ class CartBooksController < ApplicationController
 
   def destroy
     cartbook = CartBook.find_by(id: params[:id])
+    user_id = cartbook.cart_id
     cartbook.destroy
-    render json: {message: "CartBook Successfully Deleted"}
+    render json: cartbook
+    # render json: Cart.find_by(user_id: book_params[:cart_id]).books
   end
 
   def cartbook_params
-    params.require(:cartbook).permit(:id, :cart_id, :book_id)
+    params.require(:cartbook).permit(:cart_id, :book_id)
   end
 end

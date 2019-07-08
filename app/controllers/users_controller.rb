@@ -11,6 +11,9 @@ class UsersController < ApplicationController
             :books => {
               except: [:created_at, :updated_at]
             },
+            :cart_books => {
+              except: [:created_at, :updated_at]
+            },
           ]
         },
         :orders => {
@@ -19,12 +22,18 @@ class UsersController < ApplicationController
             :books => {
               except: [:created_at, :updated_at]
             },
+            :book_orders => {
+              except: [:created_at, :updated_at]
+            },
           ]
         },
         :wishlist => {
           except: [:created_at, :updated_at],
           include: [
             :books => {
+              except: [:created_at, :updated_at]
+            },
+            :wish_books => {
               except: [:created_at, :updated_at]
             },
           ]
@@ -41,8 +50,13 @@ class UsersController < ApplicationController
           :cart => {
             except: [:created_at, :updated_at],
             include: [
-              :books => {
-                except: [:created_at, :updated_at]
+              :cart_books => {
+                except: [:created_at, :updated_at],
+                include: [
+                  :book => {
+                    except: [:created_at, :updated_at]
+                  },
+                ]
               },
             ]
           },
@@ -52,13 +66,21 @@ class UsersController < ApplicationController
               :books => {
                 except: [:created_at, :updated_at]
               },
+              :book_orders => {
+                except: [:created_at, :updated_at]
+              },
             ]
           },
           :wishlist => {
             except: [:created_at, :updated_at],
             include: [
-              :books => {
-                except: [:created_at, :updated_at]
+              :wish_books => {
+                except: [:created_at, :updated_at],
+                include: [
+                  :book => {
+                    except: [:created_at, :updated_at]
+                  },
+                ]
               },
             ]
           }

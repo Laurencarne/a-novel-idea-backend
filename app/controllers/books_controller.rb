@@ -10,8 +10,14 @@ class BooksController < ApplicationController
   end
 
   def create
-    book = Book.create(book_params)
-    render json: book
+    book = Book.find_or_create_by(google_id: book_params[:google_id])
+    book.update(book_params)
+
+    if book_params[:cart_id]
+      render json: Cart.find_by(user_id: book_params[:cart_id]).books
+    elsif book_params[:wishlist_id]
+      render json: Wishlist.find_by(user_id: book_params[:wishlist_id]).books
+    end
   end
 
   def update
@@ -26,7 +32,8 @@ class BooksController < ApplicationController
     render json: {message: "Book Successfully Deleted"}
   end
 
+private
   def book_params
-    params.require(:book).permit(:id, :title, :author, :isbn, :price, :image, :publisher, :description, :snippet, :genre, :publishedDate, :pageCount)
+    params.require(:book).permit(:title, :author, :isbn, :price, :image, :publisher, :description, :snippet, :genre, :publishedDate, :pageCount, :google_id, :cart_id, :wishlist_id)
   end
 end
