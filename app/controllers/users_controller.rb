@@ -18,8 +18,8 @@ class UsersController < ApplicationController
     ]
   end
   def show
-      user = User.find_by(id: params[:id])
-      if user 
+      user = User.find_by(id: params[:id])  
+      if user  
       render json: user, except: [:created_at, :updated_at]
       else 
       render json:{error: "User not found."}, status: 404

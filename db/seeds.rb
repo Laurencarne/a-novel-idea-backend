@@ -37,3 +37,12 @@ WishBook.create(book_id: 2, wishlist_id: 1)
 WishBook.create(book_id: 2, wishlist_id: 2)
 WishBook.create(book_id: 2, wishlist_id: 3)
 WishBook.create(book_id: 2, wishlist_id: 4)
+
+#authentication
+user1=User.create(first_name:"Luren", last_name:"Carne",username:"luren19", password:"1234")
+user2=User.create(first_name:"Miao", last_name:"Shan",username:"miao89", password:"1234")
+item1=Item.create(name:"Alice's Adventures in Wonderland",description:"fantasy fiction",user_id:user2.id)
+item2=Item.create(name:"There are Girls like Lions",description:"poem",user_id:user1.id)
+
+
+
