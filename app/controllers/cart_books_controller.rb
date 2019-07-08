@@ -1,32 +1,32 @@
-class CartBookBooksController < ApplicationController
+class CartBooksController < ApplicationController
   def index
-    cartBook = CartBook.all
-    render json: cartBook, except: [:created_at, :updated_at]
+    cartbook = CartBook.all
+    render json: cartbook, except: [:created_at, :updated_at]
   end
 
   def show
-      cartBooks = CartBook.find_by(id: params[:id])
-      render json: cartBooks, except: [:created_at, :updated_at]
+      cartbooks = CartBook.find_by(id: params[:id])
+      render json: cartbooks, except: [:created_at, :updated_at]
   end
 
   def create
-    cartBook = CartBook.create(cartBook_params)
-    render json: cartBook
+    cartbook = CartBook.create(cartbook_params)
+    render json: cartbook
   end
 
   def update
-    cartBook = CartBook.find_by(id: params[:id])
-    cartBook.update(cartBook_params)
-    render json: cartBook
+    cartbook = CartBook.find_by(id: params[:id])
+    cartbook.update(cartbook_params)
+    render json: cartbook
   end
 
   def destroy
-    cartBook = CartBook.find_by(id: params[:id])
-    cartBook.destroy
+    cartbook = CartBook.find_by(id: params[:id])
+    cartbook.destroy
     render json: {message: "CartBook Successfully Deleted"}
   end
 
-  def cartBook_params
-    params.require(:cartBook).permit(:cart_id, :book_id)
+  def cartbook_params
+    params.require(:cartbook).permit(:id, :cart_id, :book_id)
   end
 end

@@ -47,6 +47,6 @@ def destroy
 end
 
 def order_params
-  params.require(:order).permit(:user_id, :total)
+  params.require(:order).permit(:user_id)
 end
 end
