@@ -47,6 +47,7 @@ def destroy
 end
 
 def order_params
-  params.require(:order).permit(:user_id)
+  params[:order][:book_ids] ||= []
+  params.require(:order).permit(:user_id, book_ids: [])
 end
 end
